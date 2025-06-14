@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shades of Love — Pick Your Fav</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #ffe0ec, #fef2f4);
+      color: #333;
+      text-align: center;
+      padding: 4rem 1rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      color: #c9184a;
+      transition: color 0.3s ease;
+    }
+
+    .songs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .song-btn {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      background: #c9184a;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .song-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transition: left 0.3s ease;
+    }
+
+    .song-btn:hover {
+      background: #a10e38;
+      transform: scale(1.05);
+    }
+
+    .song-btn:hover::after {
+      left: 0;
+    }
+
+    #message {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    #message.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #message p {
+      margin-bottom: 1.2rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .song-btn {
+        padding: 0.8rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Pick your favourite song from <em>Shades of Love</em></h1>
+  <div class="songs">
+    <button class="song-btn" onclick="showMessage('JAAN MAI TERI')">JAAN MAI TERI</button>
+    <button class="song-btn" onclick="showMessage('PYAAR HO RAHA')">PYAAR HO RAHA</button>
+    <button class="song-btn" onclick="showMessage('ADHI ADHI')">ADHI ADHI</button>
+    <button class="song-btn" onclick="showMessage('TERE BADAULAT')">TERE BADAULAT</button>
+    <button class="song-btn" onclick="showMessage('SAPNE')">SAPNE</button>
+  </div>
+  <h2 id="sub-title" style="
+  margin-top: 4rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #c9184a;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+"></h2>
+  <div id="message"></div>
+
+  <script>
+    function showMessage(song) {
+        const subTitle = document.getElementById("sub-title");
+subTitle.innerText = "TUMHARA HI BHAROSA HAI SABSE JYAADA I AM DUMBB";
+subTitle.style.opacity = "1";
+subTitle.style.transform = "translateY(0)";
+      const messageDiv = document.getElementById("message");
+      let message = '';
+      let bgColor = '#fff';
+      let textColor = '#333';
+
+      switch(song) {
+        case 'JAAN MAI TERI':
+          message = `
+            <p>You picked <strong>JAAN MAI TERI</strong>  and you know you are my absolute jaan</p>
+            <p>That thing I said... it was stupid. I never meant it that way. it was that thing that people say aise hi "tumhara koi bharosa nahi". I trust you more than anyone right noww and you knoww thattt.</p>
+            <p>I hope you can see past it and remember how much you mean to me.</p>
+          `;
+          bgColor = '#d7f9db'; // light green
+          break;
+
+        case 'PYAAR HO RAHA':
+          message = `
+            <p>You picked <strong>PYAAR HO RAHA</strong> ho to raha hai ab hai bhii .</p>
+            <p>That's where I am. In love, in belief, in trust, all with you.</p>
+            <p>One silly line shouldn't shake that. I'm sorry, truly.</p>
+          `;
+          bgColor = '#ffe4f0'; // light pink
+          break;
+
+        case 'ADHI ADHI':
+          message = `
+            <p>You picked <strong>ADHI ADHI</strong> i know hum irritate kardete hai kabhi kabhi . mere muhhh se nikalgyiii zubaaan fisall gyiiii.</p>
+            <p>We all have those moments. But even in those, humara pyaar utna hi rehtaa haii .</p>
+            <p>Please forgive me for the careless words. They don't reflect my heart.</p>
+          `;
+          bgColor = '#f0f0f0'; // dull gray
+          break;
+
+        case 'TERE BADAULAT':
+          message = `
+            <p>You picked <strong>TERE BADAULAT</strong> </p>
+            <p>I don’t want to be the reason for your hurt. I don’t want to make you feel bad over a dumb line.</p>
+            <p>maafiii dedooooo. tumhare badaulat hi toh karta hu what i doooo .</p>
+          `;
+          bgColor = '#000';
+          textColor = '#fff';
+          break;
+
+        case 'SAPNE':
+          message = `
+            <p>You picked <strong>SAPNE</strong> mera ek sapna hai ki tanu ko hamesha khush rakhuu untill she is in my lifee</p>
+            <p> I want you to know:</p>
+            <p>I trust you. More than anyone. I always did. And I’m sorry if I made you feel otherwise.</p>
+          `;
+          bgColor = '#ffffff';
+          break;
+      }
+
+      messageDiv.innerHTML = message;
+      messageDiv.style.backgroundColor = bgColor;
+      messageDiv.style.color = textColor;
+      messageDiv.classList.remove("visible");
+      void messageDiv.offsetWidth; // force reflow
+      messageDiv.classList.add("visible");
+    }
+  </script>
+</body>
+</html>
